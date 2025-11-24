@@ -7,6 +7,6 @@
 2. styles.css- This is the styling page
 3. Readme.md file- Main readme file
 4. script.js- JavaScript file
-## Project Setup##
+## Project Setup
 1. To set up the project on your browser follow this link:https://github.com/HK-001-Ke/Last-Weekend-Assignment.git
 2. To view the project, follow the following link:https://hk-001-ke.github.io/Last-Weekend-Assignment/
