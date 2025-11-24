@@ -1,31 +1,43 @@
-const welcomeMessageElement = document.getElementById('Welcome-message');
+//Select all cards
+const cards = document.querySelectorAll(".likes");
 
-document.addEventListener('DOMContentLoaded',()=> { 
-    //Prompt the user for their name once page loads.
+cards.forEach((card, index) => {
+    const btn = card.querySelector(".Like-button");
+    const countSpan = card.querySelector(".count");
 
-    if (window.prompt)
-         { const userName = prompt('What is your name?') || 'Alien';
-    welcomeMessageElement.textContent= `Welcome, ${userName}, to the best experience of your life`;
-    } 
+    // Create a unique storage key for every card
+    const storageKey = `likes_card_${index}`;
+
+    // Load saved likes
+    let likes = localStorage.getItem(storageKey)
+        ? parseInt(localStorage.getItem(storageKey))
+        : 0;
+
+    // Display saved likes on load
+    countSpan.textContent = likes;
+
+    // When clicking the like button
+    btn.addEventListener("click", () => {
+        likes++;
+        countSpan.textContent = likes;
+
+        // Save new value
+        localStorage.setItem(storageKey, likes);
+    });
 });
 
+const welcomeMessageElement = document.getElementById('Welcome-Message');
 
-const likeButtons = document.querySelectorAll('Like-button');
+        document.addEventListener('DOMContentLoaded', () => {
+            // Prompt the user for their name when the page loads
+            
+            if (window.prompt) {
+                const userName = prompt('What is your name?') || 'Alien'; // Set username as 'Alien' if they cancel.
+                welcomeMessageElement.textContent = `✨Welcome, ${userName}, to The BEST Experience of your life.✨✨`;
+            }
+        });
+        
 
-likeButtons.forEach(button => {
-    button.addEventListener('click',function() {
-
-       const parentSection = this.parentElement;
-
-        const countSpan = parentSection.querySelector('.count');
-
-        let currentCount = parseInt(countSpan.textContent);
-
-        currentCount++;
-
-        countSpan.textContent = currentCount;
-          });
-    });
 
 
 
